@@ -353,6 +353,10 @@ public class BST<E extends Comparable<E>> {
      * @date 2024-03-05 23:26
      */
     public E deleteMinNode() {
+        if (root == null) {
+            return null;
+        }
+
         E minimum = minimum();
         root = deleteMinNode(root);
         return minimum;
