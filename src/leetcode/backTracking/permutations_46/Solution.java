@@ -1,8 +1,8 @@
 package leetcode.backTracking.permutations_46;//import org.junit.Test;
 
-import Utils.recursionUtils.Recursion;
-
 import java.util.ArrayList;
+import java.util.Deque;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -10,44 +10,44 @@ import java.util.List;
  * @version 1.0
  * @className Solution
  * @date 2024-03-07-10:43
- * @description 全排列
+ * @url https://leetcode.cn/problems/permutations/description/
+ * @description 给定一个不含重复数字的数组 nums ，返回其 所有可能的全排列 。你可以 按任意顺序 返回答案。
+ * 示例 1：
+ * 输入：nums = [1,2,3]
+ * 输出：[[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]
  */
 
 public class Solution {
-    private static int depth;
-    private static List<List<Integer>> end;
 
-    public static void main(String[] args) {
-        int[] nums = {1, 2, 3};
-        new Solution().permute(nums);
-        System.out.println(end);
-    }
+    private List<List<Integer>> res;
+    private Deque<Integer> path;
+    boolean[] used;
 
     public List<List<Integer>> permute(int[] nums) {
-        end = new ArrayList<>();
-        mute(nums, 0, new ArrayList<>(), 0);
-        return end;
-
+        path = new LinkedList<>();
+        res = new ArrayList<>();
+        used = new boolean[nums.length];
+        backTracking(nums);
+        System.out.println("res = " + res);
+        return res;
     }
 
-    private void mute(int[] nums, int index, List<Integer> res, int depth) {
-
-//        System.out.print(Recursion.GenerateDepthString(depth) + index + " : ");
-        if (res.size() == nums.length) {
-            end.add(new ArrayList<>(res)); // 将当前排列的副本添加到结果列表中
-            System.out.println(Recursion.GenerateDepthString(depth) + "get " + res + ", return");
+    private void backTracking(int[] nums) {
+        if (nums.length == path.size()) {
+            res.add(new ArrayList<>(path));
             return;
         }
+
         for (int i = 0; i < nums.length; i++) {
-
-            System.out.println(Recursion.GenerateDepthString(depth) + "try use num[" + i + "]: " + nums[i]);
-            if (!res.contains(nums[i])) { // 检查当前数字是否已经在排列中
-
-                System.out.println(Recursion.GenerateDepthString(depth) + "use num[" + i + "]: " + nums[i]);
-                res.add(nums[i]);
-                mute(nums, index + 1, res, depth + 1);
-                res.remove(res.size() - 1); // 回溯，移除刚刚添加的数字
+            if (used[i] == true) {
+                continue;
             }
+            path.add(nums[i]);
+            used[i] = true;
+            backTracking(nums);
+            used[i] = false;
+            path.removeLast();
         }
     }
+
 }

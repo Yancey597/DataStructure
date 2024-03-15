@@ -58,7 +58,7 @@ public class Solution {
             if (isPalindrome(subString)) {
                 path.add(subString);
             } else {
-                continue;
+                break;
             }
             backTracking(s, i + 1);
             path.removeLast();
@@ -67,7 +67,7 @@ public class Solution {
 
     @Test
     public void test() {
-        new Solution().partition("");
+        new Solution().partition("aabb");
         System.out.println("res = " + res);
     }
 
