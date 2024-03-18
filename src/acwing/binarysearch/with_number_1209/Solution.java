@@ -1,6 +1,5 @@
-package acwing.recursion.with_number_1209;//import org.junit.Test;
+package acwing.binarysearch.with_number_1209;//import org.junit.Test;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 /**
