@@ -257,4 +257,11 @@ public class ArrayHelper {
     public static int midR(int l, int r) {
         return l + ((r - l + 1) >> 1);
     }
+
+    public static void swap(int[] q, int n1, int n2) {
+        int temp = q[n1];
+        q[n1] = q[n2];
+        q[n2] = temp;
+
+    }
 }
