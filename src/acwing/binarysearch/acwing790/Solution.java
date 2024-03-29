@@ -5,7 +5,7 @@ package acwing.binarysearch.acwing790;//import org.junit.Test;
  * @version 1.0
  * @className solution
  * @date 2024-03-18-19:05
- * @description TODO
+ * @description a^3
  */
 
 public class Solution {
