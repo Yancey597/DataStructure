@@ -54,7 +54,7 @@ public class Solution {
 //        }
 
         for (int i = 1; i < m; i++) {
-            for (int j = 1; j <= size; j++) {
+            for (int j = size; j >= 0; j--) {
                 if (weights[i] <= j) // 只有当背包容量 >= 当前货物的重量才能装
                     // 每一个 dp[i][j] 的状态有两种可能构成，装 weight[i] 的物品，或者不装当前物品。
                     // 装当前物品 背包当前的价值就是 value[i] + 当前重量 减去 weight[i] 的重量 能装物品的最大值
